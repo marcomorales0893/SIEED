@@ -7,6 +7,7 @@ if (!isset($_SESSION)) {
 <html>
 <head>
     <title>SIEED</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
@@ -175,10 +176,10 @@ if (!isset($_SESSION)) {
             if (!empty($_SESSION["nombre"])) {
                 if ($_SESSION["nombre"] == "tec") {
                     echo "
-                  <h1>Instituto Tecnológico de Pachuca</h1>
+                  <h1>".$_SESSION['nombre_tec']."</h1>
                   <img class='imgr borderedbox inspace-5' src='images/SIEED.png' alt='' >
-                  <p>Carretera Mexico Pachuca KM 87.5. CP: 42080 Col Venta Prieta, Pachuca Hidalgo</p>
-                  <p>Email: tecpachuca@edu.com</p>
+                  <p>".$_SESSION['direccion']."</p>
+                  <p>".$_SESSION['email']."</p>
                   </div> 
                    <div id='comments'>
                   <form method='post' action='pages/cerrarSesion.php'> 
@@ -187,7 +188,7 @@ if (!isset($_SESSION)) {
                   </div>";
 
                 } else {
-                    if ($_SESSION["nombre_usuario"] == "admin") {
+                    if ($_SESSION["nombre"] == "admin") {
 
                         echo "
                   <h1>Enrique (administrador)</h1>
