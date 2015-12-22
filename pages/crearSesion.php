@@ -17,9 +17,16 @@ session_start();
             $link = $conexion->conexionBd($_POST['name'],$_POST['pass']);
             if($link)
                 $_SESSION['nombre'] = "tec";
+                $_SESSION['usuario'] = $_POST['name'];
+             $result = mysql_query("SELECT * FROM tec WHERE TEC_U='".$_SESSION['usuario']."'", $link);
+            while ($row = mysql_fetch_row($result)) {
+                echo $row[2];
+            }
         }
 
-    echo "Bienvenido! Has iniciado sesion: " . $_POST['name'];
+    //echo "Bienvenido! Has iniciado sesion: " . $_POST['name'];
+
+
 
 ?>
 </body>
