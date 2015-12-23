@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 <html>
 <head>
     <title>SIEED</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
@@ -174,36 +174,51 @@ if (!isset($_SESSION)) {
             include_once("pages/conexion.php");
             $conexion = new Conexion();
             if (!empty($_SESSION["nombre"])) {
-                if ($_SESSION["nombre"] == "tec") {
-                    echo "
-                  <h1>".$_SESSION['nombre_tec']."</h1>
-                  <img class='imgr borderedbox inspace-5' src='images/SIEED.png' alt='' >
-                  <p>".$_SESSION['direccion']."</p>
-                  <p>".$_SESSION['email']."</p>
-                  </div> 
-                   <div id='comments'>
-                  <form method='post' action='pages/cerrarSesion.php'> 
-                  <input name='submit' type='submit' value='Cerrar'>
-                  </form>
-                  </div>";
-
-                } else {
-                    if ($_SESSION["nombre"] == "admin") {
-
+                $usuario = $_SESSION["nombre"];
+                switch ($usuario) {
+                    case "tec":
                         echo "
-                  <h1>Enrique (administrador)</h1>
-                  <img class='imgr borderedbox inspace-5' src='images/enrique.gif' alt='' >
-                  <p>Carretera Mexico Pachuca KM 87.5. CP: 42080 Col Venta Prieta, Pachuca Hidalgo</p>
-                  <p>Email: admin@edu.com</p>
-                  </div>
+                           <h1>" . $_SESSION['nombre_tec'] . "</h1>
+                           <img class='imgr borderedbox inspace-5' src='images/SIEED.png' alt='' >
+                           <p>" . $_SESSION['direccion'] . "</p>
+                           <p>" . $_SESSION['email'] . "</p>
+                           </div>
+                           <div id='comments'>
+                           <form method='post' action='pages/cerrarSesion.php'>
+                           <input name='submit' type='submit' value='Cerrar'>
+                           </form>
+                           </div>";
+                        break;
+                    case "admin":
+                        echo "
+                          <h1>" . $_SESSION["nomnbre_admin"] . "</h1>
+                          <img class='imgr borderedbox inspace-5' src='images/enrique.gif' alt='' >
+                          <p>" . $_SESSION['email'] . "</p>
+                          </div>
 
-                  <div id='comments'>
-                  <form action='" . $conexion->cerrarSesion() . "' method='post'>
-                  <input name='submit' type='submit' value='Cerrar' action=''>
-                  </form>
-                  </div>";
-                    }
+                          <div id='comments'>
+                          <form action='' method='post'>
+                          <input name='submit' type='submit' value='Cerrar' action=''>
+                          </form>
+                          </div>";
+                        break;
+                    case "delegado":
+                        echo "
+                          <h1>" . $_SESSION["nombre_del"] . "</h1>
+                          <p>" . $_SESSION['email'] . "</p>
+                          </div>
+
+                          <div id='comments'>
+                          <form action='' method='post'>
+                          <input name='submit' type='submit' value='Cerrar' action=''>
+                          </form>
+                          </div>";
+                        echo "";
+
+                        break;
+
                 }
+
             } else {
                 echo "
                 <div id='comments'>

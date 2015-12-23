@@ -1,5 +1,10 @@
 <?php
   session_start();
+  if(!$_SESSION['name']=="admin"){
+    header('Location: ../index1.php');
+
+
+  }
     
 ?>
 <!DOCTYPE html>

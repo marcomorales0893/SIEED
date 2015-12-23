@@ -54,7 +54,7 @@ class Menu
                     <h6>Administracion</h6>
                     <nav class='sdb_holder'>
                     <ul>
-                    <li><a href='#'>Administración del sistema</a></li>
+                    <li><a href='../administracion/administracion_sistema.php'>Administración del sistema</a></li>
                     <li><a href='#'>Mostrar Cuenta</a> </li>
                     <li><a href='#'>Editar Cuenta</a> </li>
                     <li><a href='#'>Notificaciones</a> </li>
@@ -78,14 +78,55 @@ class Menu
                 case "admin":
                     $this->usuarioAdmin();
                     break;
-                case "tecnologico":
-                    $this->usuarioTec();
+                case "delegado":
+                    $this->usuarioDelegado();
+                    break;
+                case "coordinador":
+                    $this->usuarioCoordinador();
                     break;
 
             }
 
 
         }
+    }
+
+    public function usuarioDelegado()
+    {
+
+        // $this->usuarioTec();
+        echo "
+                    <!--Menu extra de delegado -->
+                    <h6>Delegado</h6>
+                    <nav class='sdb_holder'>
+                    <ul>
+                    <li><a href='#'>Consulta por tecnológico</a></li>
+                    <li><a href='#'>Consulta por deporte</a> </li>
+                    <li><a href='#'>Consulta de sanciones</a> </li>
+                    <li><a href='#'>Notificaciones</a> </li>
+                    <li><a href='#'>Perfil</a> </li>
+
+                    </ul>
+                    </nav>";
+
+    }
+    public function usuarioCoordinador()
+    {
+
+        // $this->usuarioTec();
+        echo "
+                    <!--Menu extra de Coordinador -->
+                    <h6>Coordinador</h6>
+                    <nav class='sdb_holder'>
+                    <ul>
+                    <li><a href='#'>Consulta por tecnológico</a></li>
+                    <li><a href='#'>Consulta por zona</a> </li>
+                    <li><a href='#'>Consulta de sanciones</a> </li>
+                    <li><a href='#'>Perfil</a> </li>
+
+                    </ul>
+                    </nav>";
+
     }
 
 
